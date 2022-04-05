@@ -12,9 +12,7 @@ const cors = require("cors");
 
 dotenv.config();
 
-mongoose
-  //.connect(process.env.MONGO_URL)
-  .connect('mongodb+srv://mongodb+srv://admin:amos2017@cluster0.hwri2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://admin:admin@cluster0.kk5cn.mongodb.net/Cluster0?retryWrites=true&w=majority', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
   })
