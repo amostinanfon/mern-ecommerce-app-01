@@ -13,7 +13,11 @@ const cors = require("cors");
 dotenv.config();
 
 mongoose
-  .connect(process.env.MONGO_URL)
+  //.connect(process.env.MONGO_URL)
+  .connect('mongodb+srv://mongodb+srv://admin:amos2017@cluster0.hwri2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+  })
   .then(() => console.log("DB Connection Successfull!"))
   .catch((err) => {
     console.log(err);
