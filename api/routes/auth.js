@@ -21,7 +21,7 @@ router.post("/register", async (req,res) => {
 });
 
 
-//SE LOGUER
+//SE LOGUER ::: il faut donner l'objet complet example {username, email, password}
 router.post("/login", async(req, res)=>{
     try {
         const user = await User.findOne({username: req.body.username});
