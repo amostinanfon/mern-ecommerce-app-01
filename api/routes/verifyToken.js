@@ -12,4 +12,20 @@ const verifyToken = (req, res, next) => {
     } else {
         return res.status(401).json("Vous n'etes pas connecté !!!")
     }
+};
+
+
+const verifyTokenAndAuthorization = (req, res, next) => {
+    verifyToken(req, res, () =>{
+        if(req.user.id === req.params.id || req.user.isAdmin){
+        next();
+        } else{
+            res.status(403).json("Vous n'etes authorise a le faire")
+        }
+    }
+    )
 }
+
+
+
+module.exports = {verifyToken, verifyTokenAndAuthorization}
