@@ -1,14 +1,30 @@
+const router = require("express").Router();
+
+
 const Products = require("../models/Product");
 const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("./verifyToken");
 
-const router = require("express").Router();
 const CryptoJS = require("crypto-js");
-const { json } = require("express");
+//const { json } = require("express");
 
 
+// CREATE ..... METHODE DE CREATION DE PRODUIT
 
+router.post("/", verifyTokenAndAdmin, async(req, res) => {
+    const newProduct = new Products(req.body)
 
-// UPDATE  ::::::: mise à jour 
+    try {
+        const savedProduct = await newProduct.save();
+        res.status(200).json(savedProduct);
+        console.log(savedProduct);
+    }catch(err){
+        res.status(500).json(err);
+        console.log(err);
+    }
+
+})
+
+// UPDATE  ::::::: mise à jour
 // router.put("/:id", verifyTokenAndAuthorization, async(req, res) =>{
 
 //     const id = req.user.id;
