@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 
-const Products = require("../models/Product");
+const Product = require("../models/Product");
 const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("./verifyToken");
 
 const CryptoJS = require("crypto-js");
@@ -11,7 +11,7 @@ const CryptoJS = require("crypto-js");
 // CREATE ..... METHODE DE CREATION DE PRODUIT
 
 router.post("/", verifyTokenAndAdmin, async(req, res) => {
-    const newProduct = new Products(req.body)
+    const newProduct = new Product(req.body)
 
     try {
         const savedProduct = await newProduct.save();
@@ -25,67 +25,75 @@ router.post("/", verifyTokenAndAdmin, async(req, res) => {
 })
 
 // UPDATE  ::::::: mise à jour
-// router.put("/:id", verifyTokenAndAuthorization, async(req, res) =>{
+router.put("/:id", verifyTokenAndAuthorization, async(req, res) =>{
 
-//     const id = req.user.id;
-//     if(req.user.id === req.params.id || req.user.isAdmin){
-//         req.body.password = CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC).toString()
-// }
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(req.params.id, {
+            $set : req.body
+        }, {new: true});
 
-//     try {
-//         const updateUser = await User.findByIdAndUpdate(req.params.id, {
-//             $set : req.body
-//         }, {new: true});
-
-//         res.status(200).json(updateUser)
-//         console.log(updateUser);
-//     } catch (err) {
-//         res.status(500).json(err)
-//         console.log(err);
-//     }
-// })
+        res.status(200).json(updatedProduct)
+        console.log(updatedProduct);
+    } catch (err) {
+        res.status(500).json(err)
+        console.log(err);
+    }
+})
 
 // DELETE :::: SUPPRIMER UN ELEMENT DANS L'API
 
-// router.delete("/:id", verifyTokenAndAuthorization, async(req,res) => {
-//     try {
-//         await User.findByIdAndDelete(req.params.id);
-//         res.status(200).json("Utilisateur supprimé . . .");
-//     }catch(err){
-//         res.status(500).json(err)
-//     }
-// })
+router.delete("/:id", verifyTokenAndAdmin, async(req,res) => {
+    try {
+        await Product.findByIdAndDelete(req.params.id);
+        res.status(200).json("Produit supprimé . . .");
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
 
 
-// GET USER ... AVOIR L'UTILISATEUR
+// // GET PRODUCT ... AVOIR UN PRODUIT PRECIS
 
-// router.get("/find/:id", verifyTokenAndAdmin, async(req,res) => {
-//     try {
-//         const user =  await User.findById(req.params.id);
-//         const { password , ...others} = user._doc;
+router.get("/find/:id",  async(req,res) => {
+    try {
+        const product =  await Product.findById(req.params.id);
+        const { password , ...others} = product._doc;
 
-//         res.status(200).json(others)
-//     }catch(err){
-//         res.status(500).json(err)
-//     }
-// });
+        res.status(200).json(others)
+    }catch(err){
+        res.status(500).json(err)
+    }
+});
 
 
 // GET ALL USER ... AVOIR TOUS LES UTILISATEURS
 
-// router.get("/", verifyTokenAndAdmin, async(req,res) => {
+router.get("/", async(req,res) => {
 
-//     RETOURNER UN NOMBRE PRECIS D'UTILISATEURS
-//     const query = req.query.new
+   // RETOURNER UN NOMBRE PRECIS D'UTILISATEURS
+    const qNew = req.query.new;
+    const qCategory = req.query.category;
 
-//     try {
-//         const users = query ? await User.find().sort({_id: -1}).limit(2) : await User.find();
-//         res.status(200).json(users)
-//     }catch(err){
-//         res.status(500).json(err)
-//         console.log(err)
-//     }
-// })
+    try {
+        let products;
+
+        if (qNew){
+            const products = await Product.find().sort({createdAt: -1}).limit(1);
+            res.status(200).json(products)
+        } else if(qCategory){
+            products = await Product.find({categories : {
+                $in: [qCategory]
+            }})
+            res.status(200).json(products)
+        } else {
+            products = await Product.find();
+        }
+        return res.status(200).json(products)
+    }catch(err){
+        res.status(500).json(err)
+        console.log(err)
+    }
+})
 
 
 // GET USERS STATS ::::: AVOIR LES STATISTIQUES DES UTILISATEURS
