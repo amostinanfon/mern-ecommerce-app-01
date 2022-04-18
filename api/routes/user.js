@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const { verifyToken, verifyTokenAndAuthorization } = require("./verifyToken");
+const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("./verifyToken");
 
 const router = require("express").Router();
 const CryptoJS = require("crypto-js");
@@ -36,6 +36,33 @@ router.delete("/:id", verifyTokenAndAuthorization, async(req,res) => {
         res.status(200).json("Utilisateur supprimé . . .");
     }catch(err){
         res.status(500).json(err)
+    }
+})
+
+
+// GET USER ... AVOIR L'UTILISATEUR
+
+router.get("/find/:id", verifyTokenAndAdmin, async(req,res) => {
+    try {
+        const user =  await User.findById(req.params.id);
+        const { password , ...others} = user._doc;
+
+        res.status(200).json(others)
+    }catch(err){
+        res.status(500).json(err)
+    }
+});
+
+
+// GET ALL USER ... AVOIR TOUS LES UTILISATEURS
+
+router.get("/", verifyTokenAndAdmin, async(req,res) => {
+    try {
+        const users =  await User.find();
+        res.status(200).json(users)
+    }catch(err){
+        res.status(500).json(err)
+        console.log(err)
     }
 })
 
