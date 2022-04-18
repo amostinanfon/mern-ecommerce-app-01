@@ -2,6 +2,7 @@ const User = require("../models/User");
 const { verifyToken, verifyTokenAndAuthorization } = require("./verifyToken");
 
 const router = require("express").Router();
+const CryptoJS = require("crypto-js");
 
 
 
@@ -14,15 +15,19 @@ router.put("/:id", verifyTokenAndAuthorization, async(req, res) =>{
 }
 
     try {
-        const updateUser = await User.findByIdAndUpdate(user.params._id, {
+        const updateUser = await User.findByIdAndUpdate(req.params.id, {
             $set : req.body
         }, {new: true});
 
         res.status(200).json(updateUser)
+        console.log(updateUser);
     } catch (err) {
         res.status(500).json(err)
+        console.log(err);
     }
 })
+
+
 
 
 
