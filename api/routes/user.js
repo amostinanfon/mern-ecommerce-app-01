@@ -3,6 +3,7 @@ const { verifyToken, verifyTokenAndAuthorization } = require("./verifyToken");
 
 const router = require("express").Router();
 const CryptoJS = require("crypto-js");
+const { json } = require("express");
 
 
 
@@ -26,6 +27,35 @@ router.put("/:id", verifyTokenAndAuthorization, async(req, res) =>{
         console.log(err);
     }
 })
+
+//DELETE :::: SUPPRIMER UN ELEMENT DANS L'API
+
+router.delete("/:id", verifyTokenAndAuthorization, async(req,res) => {
+    try {
+        await User.findByIdAndDelete(req.params.id);
+        res.status(200).json("Utilisateur supprimé . . .");
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
