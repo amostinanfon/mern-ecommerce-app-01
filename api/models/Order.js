@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const OrderSchema = new mongoose.Schema(
     {
-        uuserId: { type: String, required: true },
+        userId: { type: String, required: true },
         products: [
             {
                 productId: {
@@ -20,7 +20,7 @@ const OrderSchema = new mongoose.Schema(
      },
      address: { type: Object, required: true}
     },
-    status: {type: String, default:"pending"},
+   // status: {type: String, default:"pending"},
     { timestamps: true }
 )
 
