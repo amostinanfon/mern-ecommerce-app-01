@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("./verifyToken");
 const CryptoJS = require("crypto-js");
-const Product = require("../models/Product");
+const Cart = require("../models/Cart");
 
 
 
-// CREATE ..... METHODE DE CREATION DE Cartes
+// CREATE ..... METHODE DE CREATION DE CARTE
 
 router.post("/", verifyToken , async(req, res) => {
     const newCart = new Cart(req.body)

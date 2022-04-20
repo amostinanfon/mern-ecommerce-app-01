@@ -66,7 +66,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization , async(req,res) => {
 router.get("/", verifyTokenAndAdmin ,async(req,res) => {
 
     try {
-        const oders = await Order.find();
+        const orders = await Order.find();
         return res.status(200).json(orders);
     }catch(err){
         res.status(500).json(err);
@@ -97,7 +97,6 @@ router.get("/income", verifyTokenAndAdmin, async(req, res) =>{
                 }
             }
         ]);
-        console.log(income)
     res.status(200).json(income);
     }catch(err){
         res.status(500).json(err);
