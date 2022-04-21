@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import StripeCheckOut from 'react-stripe-checkout';
 import axios from 'axios';
 
@@ -9,6 +10,7 @@ export default function Pay() {
 
     const [stripeToken,setStripeToken] = useState(null);
 
+let navigate = useNavigate();
 
 const onToken = (token) => {
     setStripeToken(token);
@@ -27,13 +29,14 @@ useEffect(() => {
            )
 
            console.log(res.data);
+           navigate("/success");
         } catch (error) {
             console.log(error);
         }
     }
 
    stripeToken && makeRequest()
-}, [stripeToken])
+}, [stripeToken, navigate]);
 
 
   return (
@@ -44,31 +47,36 @@ useEffect(() => {
             justifyContent: "center"
         }}
     >
-        <StripeCheckOut 
-            name='E commerce' 
-            image='https://cdn-icons-png.flaticon.com/512/219/219983.png'
-            billingAddress
-            shippingAddress
-            description='total Achat $40'
-            amount={4000}
-            token={onToken}
-            stripeKey={KEY}
-        >
-            <button
-                style={{
-                    border: "none",
-                    width: 120,
-                    borderRadius: 5,
-                    padding: "20px",
-                    backgroundColor: "black",
-                    color: "white",
-                    cursor: 'pointer',
-                    fontWeight: '600'
-                }}
+
+        {stripeToken ? (
+            <span> Paiement en cours . . . Patientez </span>
+        ) : (<StripeCheckOut 
+                name='E commerce' 
+                image='https://cdn-icons-png.flaticon.com/512/219/219983.png'
+                billingAddress
+                shippingAddress
+                description='total Achat $40'
+                amount={4000}
+                token={onToken}
+                stripeKey={KEY}
             >
-                Pay Now
-            </button>
-        </StripeCheckOut>
+                <button
+                    style={{
+                        border: "none",
+                        width: 120,
+                        borderRadius: 5,
+                        padding: "20px",
+                        backgroundColor: "black",
+                        color: "white",
+                        cursor: 'pointer',
+                        fontWeight: '600'
+                    }}
+                >
+                    Pay Now
+                </button>
+            </StripeCheckOut>)
+    }
+        
         
     </div>
   )
