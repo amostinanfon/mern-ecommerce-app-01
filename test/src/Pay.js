@@ -11,7 +11,7 @@ export default function Pay() {
 
 
 const onToken = (token) => {
-    console.log(token);
+    setStripeToken(token);
 }
 
 useEffect(() => {
@@ -32,7 +32,7 @@ useEffect(() => {
         }
     }
 
-   stripeToken() && makeRequest()
+   stripeToken && makeRequest()
 }, [stripeToken])
 
 
