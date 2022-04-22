@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   align-items: 'center';
   justify-content: space-between;
 `
-const Logo = styled.h1`
+const Logo = styled.h3`
   font-weight: bold;
 `
 const Language = styled.span`
@@ -70,7 +70,7 @@ const Navbar = () => {
             <Search style={{color:'gray', fontSize:'16px'}} />
           </SearchContainer>
         </Left>
-        <Center><Logo>E!!!</Logo></Center>
+        <Center><Logo>AMOS</Logo></Center>
         <Right>
           <MenuItem>ENREGISTRER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
