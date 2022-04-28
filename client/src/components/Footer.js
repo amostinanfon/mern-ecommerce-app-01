@@ -100,7 +100,7 @@ const Footer = () => {
             </SocialContainer>
         </Left>
         <Center>
-            <Title style={{marginBottom:"10px"}}>Usefull Links</Title>
+            <Title style={{marginBottom:"10px"}}>Liens utiles</Title>
             <List>
                 <ListItem>Home</ListItem>
                 <ListItem>Cart</ListItem>
@@ -117,13 +117,13 @@ const Footer = () => {
         <Right>
             <Title style={{marginBottom:"10px"}}>Contact</Title>
             <ContactItem>
-                <Room style={{marginRight:"10px"}}/>Douala Cameroun , B.P . 4256 
+                <Room style={{marginRight:"10px"}}/>Douala Cameroun , B.P . 41256 
             </ContactItem>
             <ContactItem>
                 <Phone style={{marginRight:"10px"}}/>+237 694 29 11 73
             </ContactItem>
             <ContactItem>
-                <MailOutline style={{marginRight:"10px"}}/>amostinanfon!&@gmail.com
+                <MailOutline style={{marginRight:"10px"}}/>amostinanfon17@gmail.com
             </ContactItem>
             <Payment src="https://www.citypng.com/public/uploads/preview/hd-visa-mastercard-paypal-payment-methods-logos-png-21635415866zngy8aj06k.png"/>
         </Right>
