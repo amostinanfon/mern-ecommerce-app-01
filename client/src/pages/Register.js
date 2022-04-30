@@ -10,7 +10,7 @@ const Container = styled.div`
         rgba(255,255,255,0.5), 
         rgba(255,255,255,0.5)
     ),
-    url("https://img.freepik.com/photos-gratuite/femme-elegante-sacs-provisions_23-2148733313.jpg?w=2000")
+    url("https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
     center;
     display: flex;
     align-items: center;
@@ -48,6 +48,7 @@ const Button = styled.button`
     background-color: teal;
     color: white;
     cursor: pointer;
+    text-transform: uppercase;
 `
 
 
@@ -69,7 +70,7 @@ const Register = () => {
                         Occaecat non velit incididunt ad cupidatat irure et officia
                         Occaecat non velit incididunt ad cupidatat <b>PRIVACY POLICY</b>.
                     </Agreement>
-                    <Button>CREATE</Button>
+                    <Button>créer</Button>
                 </Form>
             </Wrapper>
         </Container>
