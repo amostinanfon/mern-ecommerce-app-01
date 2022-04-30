@@ -8,6 +8,7 @@ import mobile from '../responsive'
 
 const Container = styled.div`
   height: 60px;
+  margin: 5px;
   ${mobile({height:"50px"})}
 `
 
@@ -21,11 +22,13 @@ const Wrapper = styled.div`
 `
 const Logo = styled.h3`
   font-weight: bold;
+  ${mobile({fontSize:"24px"})}
+
 `
 const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
-  ${mobile({padding:"10px 0px"})}
+  ${mobile({display: "none"})}
 
 `
 
@@ -39,6 +42,8 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
   border: none; 
+  ${mobile({width:"50px"})}
+
 `
 
 const Left = styled.div`
@@ -53,16 +58,20 @@ const Center = styled.div`
 `
 
 const Right = styled.div`
-  display: flex;
   flex: 1;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
+  ${mobile({ flex: 2, justifyContent:"center"})}
+
 `
 
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  ${mobile({fontSize:"10px", marginLeft:"10px"})}
+
 `
 
 const Navbar = () => {

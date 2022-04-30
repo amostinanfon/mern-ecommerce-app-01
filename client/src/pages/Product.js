@@ -2,6 +2,7 @@ import { Add, Remove } from '@material-ui/icons';
 import styled from 'styled-components';
 import Announcement from '../components/Announcement';
 import Navbar from '../components/Navbar';
+import mobile from '../responsive';
 
 
 
@@ -12,6 +13,8 @@ const Container = styled.div`
 const Wrapper = styled.div`
     padding: 50px;
     display: flex;
+    ${mobile({padding: "10px", flexDirection:"column"})}
+
 `
 
 const ImgContainer = styled.div`
@@ -22,6 +25,7 @@ const Image  = styled.img`
     height: 73vh;
     object-fit: cover;
     padding: 0 50px;
+    ${mobile({height: "40vh"})}
 
 `
 
@@ -78,6 +82,7 @@ const AddContainer = styled.div`
     display: flex;
     align-items: space-between;
     justify-content: center;
+    ${mobile({width:"100%"})}
 `;
 const AmountContainer = styled.div`
     display: flex;
@@ -153,7 +158,7 @@ const Product = () => {
                                 <Amount>1</Amount>
                                 <Add/>
                             </AmountContainer>
-                            <Button>ADD TO CART</Button>
+                            <Button>ADD A LA CARTE</Button>
                         </AddContainer>
                     </InfoContainer>
                 </Wrapper>

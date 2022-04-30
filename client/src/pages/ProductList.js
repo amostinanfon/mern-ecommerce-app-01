@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import Products from "../components/Products";
+import mobile from '../responsive';
 
 
 
@@ -23,6 +24,8 @@ const FilterContainer = styled.div`
 
 const Filter = styled.div`
     margin: 20px;
+    ${mobile({width: "0px 20px", display: "flex", flexDirection:"column"})}
+
 `
 
 const FilterText = styled.span`
@@ -37,6 +40,8 @@ const Option = styled.option`
 const Select = styled.select`
     padding: 10px;
     margin-right: 20px;
+    ${mobile({margin: "10px 0px"})}
+
 `
 
 
@@ -45,10 +50,10 @@ const ProductList = () => {
     <Container>
         <Navbar/>
         <Announcement/>
-        <Title>Dresses</Title>
+        <Title>vetements et chaussures :</Title>
         <FilterContainer>
             <Filter>
-                <FilterText>Filter Products:</FilterText>
+                <FilterText>filtrer les produits:</FilterText>
                 <Select>
                     <Option disabled selected>Couleur :</Option>
                     <Option>White</Option>

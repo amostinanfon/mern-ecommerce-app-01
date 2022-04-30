@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import { Facebook, Pinterest, Instagram, Twitter , Room , MailOutline , Phone} from '@material-ui/icons';
+import mobile from '../responsive';
 
 
 const Container = styled.div`
     display: flex;
     padding-bottom: 10px;
+    ${mobile({flexDirection: "column"})}
+
 `
 const Left = styled.div`
     flex: 1;
@@ -15,10 +18,13 @@ const Left = styled.div`
 const Center = styled.div`
     flex: 1;
     padding: 20px;
+    ${mobile({display: "none"})}
+
 `
 const Right = styled.div`
     flex: 1;
-    padding: 20px;
+    padding: 20px;    
+    ${mobile({backgroundColor: "#faecdf"})}
 `
 
 const Logo = styled.h3`
@@ -103,15 +109,15 @@ const Footer = () => {
             <Title style={{marginBottom:"10px"}}>Liens utiles</Title>
             <List>
                 <ListItem>Home</ListItem>
-                <ListItem>Cart</ListItem>
-                <ListItem>Man Fashion</ListItem>
-                <ListItem>Woman Fashion</ListItem>
-                <ListItem>My Account</ListItem>
-                <ListItem>Order Tracking</ListItem>
+                <ListItem>Carte</ListItem>
+                <ListItem>Mode Homme</ListItem>
+                <ListItem>Mode femme</ListItem>
+                <ListItem>Mon Compte</ListItem>
+                <ListItem>Suivi de commande</ListItem>
+                <ListItem>Favori</ListItem>
+                <ListItem>Suivi de commande</ListItem>
                 <ListItem>Whistlist</ListItem>
-                <ListItem>Whistlist</ListItem>
-                <ListItem>Whistlist</ListItem>
-                <ListItem>Terms</ListItem>
+                <ListItem>Mode femme</ListItem>
             </List>
         </Center>
         <Right>

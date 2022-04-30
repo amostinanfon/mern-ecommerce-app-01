@@ -2,22 +2,22 @@ export const sliderItems = [
     {
       id: 1,
       img: "https://cdn.create.vista.com/api/media/small/230387350/stock-photo-portrait-beautiful-smiling-woman-looking",
-      title: "SUMMER SALE",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+      title: "printemps",
+      desc: "Ne faites pas de compromis avec le style.",
       bg: "f5fafd",
     },
     {
       id: 2,
       img: "https://s1.1zoom.me/big3/991/White_background_Jump_Smile_Jeans_T-shirt_565950_2560x1600.jpg",
-      title: "AUTUMN COLLECTION",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+      title: "automne",
+      desc: "Ne faites pas de compromis avec le style.",
       bg: "fcf1ed",
     },
     {
       id: 3,
       img: "https://thumbs.dreamstime.com/b/femme-asiatique-s%C3%A9duisante-attirante-27748722.jpg",
-      title: "LOUNGEWEAR LOVE",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+      title: "hiver",
+      desc: "Ne faites pas de compromis avec le style.",
       bg: "fbf0f4",
     },
   ];
