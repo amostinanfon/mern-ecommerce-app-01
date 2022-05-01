@@ -68,7 +68,7 @@ router.get("/find/:id",  async(req,res) => {
 
 // GET ALL USER ... AVOIR TOUS LES UTILISATEURS
 
-router.get("/", async(req,res) => {
+router.get("/", async(req,res, next) => {
 
    // RETOURNER UN NOMBRE PRECIS D'UTILISATEURS
     const qNew = req.query.new;
@@ -80,19 +80,25 @@ router.get("/", async(req,res) => {
         if (qNew){
             const products = await Product.find().sort({createdAt: -1}).limit(1);
             res.status(200).json(products)
+            console.log(products);
         } else if(qCategory){
             products = await Product.find({categories : {
                 $in: [qCategory]
             }})
-            res.status(200).json(products)
+            res.status(200).json(products);
+            console.log(products);
+
         } else {
             products = await Product.find();
+            res.status(200).json(products);
+            console.log(products)
+
         }
-        //return res.status(200).json(products)
     }catch(err){
-        //res.status(500).json(err)
+        res.status(500).json(err)
         console.log(err)
     }
+    next();
 })
 
 

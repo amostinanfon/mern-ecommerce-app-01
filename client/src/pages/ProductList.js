@@ -52,12 +52,12 @@ const ProductList = () => {
     const location = useLocation();
     const cat =  location.pathname.split("/")[2];
 
-    const [filters, setFilter] = useState({});
+    const [filters, setFilters] = useState({});
     const [sort, setSort] = useState("Nouveau");
 
     const handleFilters = (e) => {
         const value = e.target.value;
-        setFilter({
+        setFilters({
             ...filters,
             [e.target.name]: value, 
         });

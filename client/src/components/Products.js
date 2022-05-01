@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { popularProducts } from "../data";
+//import { popularProducts } from "../data";
 import Product from './Product';
 import axios from "axios";
 
@@ -14,11 +14,15 @@ const Container = styled.div`
 `
 
 
+// const Products = ({cat, filters, sort}) => {
+
+// const [products,setProducts] = useState([]);
+// const [filteredProducts,setFilteredProducts] = useState([]);
+
 const Products = ({cat, filters, sort}) => {
 
 const [products,setProducts] = useState([]);
 const [filteredProducts,setFilteredProducts] = useState([]);
-
 
 useEffect(() => {
   const getProducts = async() => {
@@ -53,13 +57,21 @@ useEffect(() =>{
     }
 },[sort])
 
-    return (<Container> {
-                        popularProducts.map((item) => (
-                       <Product  item={item} key={item.id} />
-                  ))
+    return (<Container> 
+                {
+                       cat ? filteredProducts.map((item, index) => <Product  item={item} key={index} />) : 
+                       products.slice(0, 4).map((item, index) => <Product  item={item} key={index}/>)
                 }
            </Container>
    )
+
+    // return (
+    //     <Container>
+    //         {popularProducts.map((item) => (
+    //             <Product item={item} key={item.id} />
+    //         ))}
+    //     </Container>
+    // )
 }
 
 
