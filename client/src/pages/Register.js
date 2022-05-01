@@ -10,7 +10,7 @@ const Container = styled.div`
         rgba(255,255,255,0.5), 
         rgba(255,255,255,0.5)
     ),
-    url("https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+    url("https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
     center;
     display: flex;
     align-items: center;
