@@ -35,7 +35,7 @@ useEffect(() => {
     };
   }
     getProducts();
-}, [cat])
+},[cat]);
 
 
 useEffect(() =>{
@@ -60,7 +60,7 @@ useEffect(() =>{
     return (<Container> 
                 {
                        cat ? filteredProducts.map((item, index) => <Product  item={item} key={index} />) : 
-                       products.slice(0, 4).map((item, index) => <Product  item={item} key={index}/>)
+                       products.slice(0, 8).map((item, index) => <Product  item={item} key={index}/>)
                 }
            </Container>
    )

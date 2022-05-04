@@ -53,7 +53,7 @@ const ProductList = () => {
     const cat =  location.pathname.split("/")[2];
 
     const [filters, setFilters] = useState({});
-    const [sort, setSort] = useState("Nouveau");
+    const [sort, setSort] = useState("nouveau");
 
     const handleFilters = (e) => {
         const value = e.target.value;
@@ -61,7 +61,16 @@ const ProductList = () => {
             ...filters,
             [e.target.name]: value, 
         });
+
     };
+    const handleNew = (e) => {
+        const value = e.target.value;
+        setSort(value)
+    };
+
+    console.log(filters);
+    console.log(sort);
+    console.log(cat);
   return (
     <Container>
         <Navbar/>
@@ -69,17 +78,17 @@ const ProductList = () => {
         <Title>vetements et chaussures :</Title>
         <FilterContainer>
             <Filter>
-                <FilterText>filtrer les produits:</FilterText>
-                <Select name="color" onChange={handleFilters}>
-                    <Option disabled >Couleurs :</Option>
-                    <Option>Blanc</Option>
-                    <Option>Noir</Option>
-                    <Option>Rouge</Option>
-                    <Option>Bleu</Option>
-                    <Option>Jaune</Option>
-                    <Option>Vert</Option>
+                <FilterText>filtrer les produits</FilterText>
+                <Select name="couleur" onChange={handleFilters}>
+                    <Option disabled >Couleur</Option>
+                    <Option>blanc</Option>
+                    <Option>noir</Option>
+                    <Option>rouge</Option>
+                    <Option>bleu</Option>
+                    <Option>jaune</Option>
+                    <Option>vert</Option>
                 </Select>
-                <Select name="size" onChange={handleFilters}>
+                <Select name="taille" onChange={handleFilters}>
                     <Option disabled >Taille :</Option>
                     <Option>XS</Option>
                     <Option>S</Option>
@@ -90,8 +99,9 @@ const ProductList = () => {
             </Filter>
             <Filter>
                 <FilterText>Par Produits:</FilterText>
-                <Select onChange={(e) => setSort(e.target.value)}>
-                    <Option name="Nouveau">Nouveau :</Option>
+                {/* <Select onChange={(e) => setSort(e.target.value)}> */}
+                    <Select name="sort" onChange={handleNew}>
+                    <Option name="nouveau">nouveau</Option>
                     <Option name="asc">Prix (asc)</Option>
                     <Option name="desc">Prix (desc)</Option>
                 </Select>
