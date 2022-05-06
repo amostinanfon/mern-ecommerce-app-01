@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import Announcement from '../components/Announcement';
 import Navbar from '../components/Navbar';
 import mobile from '../responsive';
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { publicRequest } from '../requestMethods';
 
 
 
 const Container = styled.div`
-
 `
 
 const Wrapper = styled.div`
@@ -115,12 +117,36 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+
+    const location = useLocation();
+    const id = location.pathname.split("")[2];
+    const [product, setProduct] = useState({});
+    // const [color, setColor] = useState({});
+    // const [product, setProduct] = useState({});
+
+
+    useEffect(() => {
+        const getProducts = async () => {
+            try{
+                const res= publicRequest.get("/products/find" + id);
+                setProduct(res.data);
+            } catch {
+
+            }
+        }
+
+        getProducts();
+    },[id])
+
+
+
     return (<Container>
                 <Navbar />
                 <Announcement />
                 <Wrapper >
                     <ImgContainer>
-                        <Image src="https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png"/>
+                        {/* <Image src="https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png"/> */}
+                        <Image src={product.img}/>
                     </ImgContainer>
                     <InfoContainer>
                         <Title>Amos TINA NFON   </Title>

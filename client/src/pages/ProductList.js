@@ -75,10 +75,10 @@ const ProductList = () => {
     <Container>
         <Navbar/>
         <Announcement/>
-        <Title>vetements et chaussures :</Title>
+        <Title>{cat}</Title>
         <FilterContainer>
             <Filter>
-                <FilterText>filtrer les produits</FilterText>
+                <FilterText>Filtrer les produits</FilterText>
                 <Select name="couleur" onChange={handleFilters}>
                     <Option disabled >Couleur</Option>
                     <Option>blanc</Option>
@@ -89,7 +89,7 @@ const ProductList = () => {
                     <Option>vert</Option>
                 </Select>
                 <Select name="taille" onChange={handleFilters}>
-                    <Option disabled >Taille :</Option>
+                    <Option disabled >Taille</Option>
                     <Option>XS</Option>
                     <Option>S</Option>
                     <Option>M</Option>
