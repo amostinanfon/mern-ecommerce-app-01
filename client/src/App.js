@@ -12,11 +12,15 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate,
+  //Redirect
 } from "react-router-dom";
 
 
 
 const App = () => {
+
+  const user = true;
 
   return <BrowserRouter>
             <Routes>
@@ -24,8 +28,8 @@ const App = () => {
                 <Route path="/products/:category" element={<ProductList />}/>
                 <Route path="/product/:id" element={<Product/>}/>
                 <Route path="/cart" element={<Cart/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/register" element={<Register/>}/>
+                <Route path="/login" element={ user ? <Navigate to={"/"} /> : <Login/>}/>
+                <Route path="/register" element={ user ? <Navigate to={"/"} /> : <Register/>}/>
             </Routes>
          </BrowserRouter>
 };

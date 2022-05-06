@@ -113,34 +113,36 @@ const Button = styled.button`
 
     &:hover{
         background-color: #f8f4f4;
-    }
+    } 
 `;
 
 const Product = () => {
 
     const location = useLocation();
-    const id = location.pathname.split("")[2];
+    const id = location.pathname.split("/")[2];
     const [product, setProduct] = useState({});
     // const [color, setColor] = useState({});
-    // const [product, setProduct] = useState({});
 
 
     useEffect(() => {
-        const getProducts = async () => {
+        const getProduct = async () => {
             try{
-                const res= publicRequest.get("/products/find" + id);
+                const res = await publicRequest.get("/products/find/" + id);
                 setProduct(res.data);
-            } catch {
-
+                console.log(res);
+            } catch(err) {
+                console.log(err);
             }
-        }
-
-        getProducts();
+        };
+        getProduct();
+        // console.log(product)
+        // console.log(id)
     },[id])
 
 
 
-    return (<Container>
+    return (
+            <Container>
                 <Navbar />
                 <Announcement />
                 <Wrapper >
@@ -149,17 +151,9 @@ const Product = () => {
                         <Image src={product.img}/>
                     </ImgContainer>
                     <InfoContainer>
-                        <Title>Amos TINA NFON   </Title>
-                        <Desc>Proident officia consequat cillum qui eiusmod dolor in nostrud mollit culpa.
-                             Reprehenderit officia cupidatat laboris eu reprehenderit occaecat elit dolore 
-                             officia pariatur non ea. Ea minim nisi excepteur elit ad ipsum culpa dolore. 
-                             Excepteur labore veniam consequat commodo exercitation do consectetur duis. I
-                             ncididunt anim aliquip et sit dolore minim pariatur mollit eu reprehenderit magna.
-                              Duis enim irure dolore id aute culpa non.
-                            Ipsum consectetur ad enim anim in ut magna fugiat excepteur pariatur anim.
-
-                        </Desc>
-                        <Price>$ 20</Price>
+                        <Title>{product.title}</Title>
+                        <Desc>{product.desc}</Desc>
+                        <Price>$ {product.price}</Price>
                         <FilterContainer>
                             <Filter>
                                 <FilterTitle>Couleur</FilterTitle>
