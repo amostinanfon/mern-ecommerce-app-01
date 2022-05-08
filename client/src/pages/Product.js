@@ -13,7 +13,7 @@ const Container = styled.div`
 `
 
 const Wrapper = styled.div`
-    padding: 70px;
+    padding: 50px;
     display: flex;
     ${mobile({padding: "10px", flexDirection:"column"})}
 
@@ -25,7 +25,7 @@ const ImgContainer = styled.div`
 
 const Image  = styled.img`
     width: 50%;
-    height: 30vh;
+    height: 50vh;
     object-fit: cover;
     padding: 0 70px;
     ${mobile({height: "40vh"})}
@@ -122,8 +122,9 @@ const Product = () => {
     const location = useLocation();
     const id = location.pathname.split("/")[2];
     const [product, setProduct] = useState({});
-    // const [color, setColor] = useState({});
-
+    const [quantity, setQuantity] = useState(1);
+    const [color, setColor] = useState("");
+    const [size, setSize] = useState("");
 
     useEffect(() => {
         const getProduct = async () => {
@@ -134,8 +135,18 @@ const Product = () => {
                 console.log(err);
             }
         };
-        getProduct();
+        getProduct(); 
      },[id])
+
+
+    const handleQuantity = (type) => {
+        if (type === "dec") {
+          quantity > 1 && setQuantity(quantity - 1)
+        } else {
+            setQuantity(quantity + 1)
+        }
+    } 
+
 
 
 
@@ -173,9 +184,9 @@ const Product = () => {
                         </FilterContainer>
                         <AddContainer>
                             <AmountContainer>
-                                <Remove/>
-                                <Amount>1</Amount>
-                                <Add/>
+                                <Remove onClick={()=> handleQuantity("dec")}/>
+                                <Amount>{quantity}</Amount>
+                                <Add onClick={()=> handleQuantity("inc")}/>
                             </AmountContainer>
                             <Button>ADD A LA CARTE</Button>
                         </AddContainer>
