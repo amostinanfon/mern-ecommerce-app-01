@@ -5,6 +5,14 @@ import Navbar from "../components/Navbar";
 import { Add , Remove } from "@material-ui/icons";
 import mobile from "../responsive";
 import { useSelector } from "react-redux";
+import StripeCheckout from 'react-stripe-checkout';
+import { useState } from "react";
+
+
+
+const KEY = "pk_test_51KqbC1Iy4HUE4XIxOxEwHknzHjIPQnSOybdJzDwHDmQ2XVNLavD59jiIWj89P7zL5v1ZuaAkqVVsCxaPc856acC300GN2Iy9sm";
+//const KEY = process.env.REACT_APP_STRIPE;
+
 
 
 const Container = styled.div`
@@ -154,6 +162,7 @@ const Button = styled.button`
     font-size: 15px;
     padding: 10px;
     width: 100%;
+    cursor: pointer;
 `
 
 const Cart = () => {
@@ -161,6 +170,16 @@ const Cart = () => {
     const cart = useSelector(state => state.cart);
 
     console.log(cart);
+
+    const [stripeToken,setStripeToken] = useState(null);
+
+
+    const onToken = (token) => {
+        setStripeToken(token);
+    };
+
+    console.log(stripeToken);
+
   return (
       <Container>
           <Navbar/>
@@ -178,8 +197,8 @@ const Cart = () => {
               <Hr/>
               <Bottom>
                       <Info>
-                          {cart.products.map((product) =>(
-                                <Product>
+                          {cart.products.map((product, index) =>(
+                                <Product key={index}>
                                     <ProductDetail>
                                         <Image src={product.img}/>
                                         <Details>
@@ -218,7 +237,20 @@ const Cart = () => {
                                     <SummaryTitleText>Total</SummaryTitleText>
                                     <SummaryItemPrice>${cart.total}</SummaryItemPrice>
                                 </SummaryItem>
-                                <Button>RÉGLER MAINTENANT</Button>
+                                <StripeCheckout 
+                                    name='E commerce' 
+                                    image='https://cdn-icons-png.flaticon.com/512/219/219983.png'
+                                    billingAddress
+                                    shippingAddress
+                                    description='total Achat $40'
+                                    amount={4000}
+                                    token={onToken}
+                                    stripeKey={KEY}
+                                >
+                                    <Button>
+                                        RÉGLER MAINTENANT
+                                    </Button>
+                                </StripeCheckout>
                             </Summary>
               </Bottom>
           </Wrapper>
