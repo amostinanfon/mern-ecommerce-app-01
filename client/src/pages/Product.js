@@ -13,7 +13,7 @@ const Container = styled.div`
 `
 
 const Wrapper = styled.div`
-    padding: 50px;
+    padding: 70px;
     display: flex;
     ${mobile({padding: "10px", flexDirection:"column"})}
 
@@ -22,11 +22,12 @@ const Wrapper = styled.div`
 const ImgContainer = styled.div`
         flex: 1;
 `
+
 const Image  = styled.img`
-    width: 100%;
-    height: 73vh;
+    width: 50%;
+    height: 30vh;
     object-fit: cover;
-    padding: 0 50px;
+    padding: 0 70px;
     ${mobile({height: "40vh"})}
 
 `
@@ -129,15 +130,12 @@ const Product = () => {
             try{
                 const res = await publicRequest.get("/products/find/" + id);
                 setProduct(res.data);
-                console.log(res);
             } catch(err) {
                 console.log(err);
             }
         };
         getProduct();
-        // console.log(product)
-        // console.log(id)
-    },[id])
+     },[id])
 
 
 
@@ -147,7 +145,6 @@ const Product = () => {
                 <Announcement />
                 <Wrapper >
                     <ImgContainer>
-                        {/* <Image src="https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png"/> */}
                         <Image src={product.img}/>
                     </ImgContainer>
                     <InfoContainer>
@@ -157,19 +154,21 @@ const Product = () => {
                         <FilterContainer>
                             <Filter>
                                 <FilterTitle>Couleur</FilterTitle>
-                                <FilterColor couleur="noir"/>
-                                <FilterColor couleur="bleu"/>
-                                <FilterColor couleur="rouge"/>
+                                { 
+                                    product.couleur?.map((c) => 
+                                        <FilterColor color={c} key={c}></FilterColor>)
+                                    
+                                }
                             </Filter>
                             <Filter>
                                 <FilterTitle>Taille</FilterTitle>
-                              <FilterSize>
-                                    <FilterSizeOption>XS</FilterSizeOption>
-                                    <FilterSizeOption>S</FilterSizeOption>
-                                    <FilterSizeOption>XL</FilterSizeOption>
-                                    <FilterSizeOption>L</FilterSizeOption>
-                                    <FilterSizeOption>M</FilterSizeOption>
-                              </FilterSize>
+                                <FilterSize>
+                                    { 
+                                        product.taille?.map((t) => 
+                                            <FilterSizeOption key={t}>{t}</FilterSizeOption>
+                                        )
+                                    }
+                                </FilterSize>
                             </Filter>
                         </FilterContainer>
                         <AddContainer>
