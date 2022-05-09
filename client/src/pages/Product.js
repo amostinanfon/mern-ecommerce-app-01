@@ -198,7 +198,7 @@ const Product = () => {
                                 <Amount>{quantity}</Amount>
                                 <Add onClick={() => handleQuantity("inc")}/>
                             </AmountContainer>
-                            <Button onClick={handleClick}>ADD A LA CARTE</Button>
+                            <Button onClick={handleClick}>AJOUTER A LA CARTE</Button>
                         </AddContainer>
                     </InfoContainer>
                 </Wrapper>

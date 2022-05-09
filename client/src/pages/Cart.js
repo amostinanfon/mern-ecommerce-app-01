@@ -242,8 +242,8 @@ const Cart = () => {
                                     image='https://cdn-icons-png.flaticon.com/512/219/219983.png'
                                     billingAddress
                                     shippingAddress
-                                    description='total Achat $40'
-                                    amount={4000}
+                                    description={`VOtre total est $${cart.total}`}
+                                    amount={cart.total*100}
                                     token={onToken}
                                     stripeKey={KEY}
                                 >
