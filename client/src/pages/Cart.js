@@ -6,9 +6,9 @@ import { Add , Remove } from "@material-ui/icons";
 import mobile from "../responsive";
 import { useSelector } from "react-redux";
 import StripeCheckout from 'react-stripe-checkout';
-import { useState, useEffect, useHistory } from "react";
+import { useState, useEffect} from "react";
 import { userRequest } from "../requestMethods";
-
+import { useNavigate } from "react-router-dom";
 
 
 const KEY = process.env.REACT_APP_STRIPE;
@@ -169,7 +169,7 @@ const Cart = () => {
 
     const cart = useSelector(state => state.cart);
     const [stripeToken,setStripeToken] = useState(null);
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const onToken = (token) => {
         setStripeToken(token);
@@ -180,16 +180,16 @@ const Cart = () => {
             try{
                 const res = await userRequest.post("/checkout/payment", {
                     tokenId: stripeToken.id,
-                    amount: cart.total*100,
+                    amount: 500,
                 });
                 
-                history.push("/success", {data: res.data});
+                navigate("/success", {data: res.data});
             }catch{
 
             }
         }
       stripeToken && makeRequest();
-    }, [stripeToken, cart.total,history])
+    }, [stripeToken, cart.total,navigate])
     
 
   return (
