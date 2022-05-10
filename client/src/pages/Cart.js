@@ -6,12 +6,12 @@ import { Add , Remove } from "@material-ui/icons";
 import mobile from "../responsive";
 import { useSelector } from "react-redux";
 import StripeCheckout from 'react-stripe-checkout';
-import { useState } from "react";
+import { useState, useEffect, useHistory } from "react";
+import { userRequest } from "../requestMethods";
 
 
 
-const KEY = "pk_test_51KqbC1Iy4HUE4XIxOxEwHknzHjIPQnSOybdJzDwHDmQ2XVNLavD59jiIWj89P7zL5v1ZuaAkqVVsCxaPc856acC300GN2Iy9sm";
-//const KEY = process.env.REACT_APP_STRIPE;
+const KEY = process.env.REACT_APP_STRIPE;
 
 
 
@@ -168,17 +168,29 @@ const Button = styled.button`
 const Cart = () => {
 
     const cart = useSelector(state => state.cart);
-
-    console.log(cart);
-
     const [stripeToken,setStripeToken] = useState(null);
-
+    const history = useHistory()
 
     const onToken = (token) => {
         setStripeToken(token);
     };
 
-    console.log(stripeToken);
+    useEffect(() => {
+        const makeRequest = async () => {
+            try{
+                const res = await userRequest.post("/checkout/payment", {
+                    tokenId: stripeToken.id,
+                    amount: cart.total*100,
+                });
+                
+                history.push("/success", {data: res.data});
+            }catch{
+
+            }
+        }
+      stripeToken && makeRequest();
+    }, [stripeToken, cart.total,history])
+    
 
   return (
       <Container>
