@@ -68,9 +68,6 @@ const ProductList = () => {
         setSort(value)
     };
 
-    // console.log(filters);
-    // console.log(sort);
-    // console.log(cat);
   return (
     <Container>
         <Navbar/>

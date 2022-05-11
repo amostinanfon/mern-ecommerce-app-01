@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import mobile from "../responsive";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/apiCalls";
 
 
@@ -47,6 +47,10 @@ const Button = styled.button`
     background-color: teal;
     color: white;
     cursor: pointer;
+    &:disabled {
+        color: green;
+        cursor: not-allowed;
+    }
 `
 
 const Link = styled.a`
@@ -56,12 +60,17 @@ const Link = styled.a`
     cursor: pointer;
 `
 
+const Error = styled.span`
+    color: red;
+`
 
 const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
+    const { isFetching, error } = useSelector((state) => state.user);
+
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -82,7 +91,13 @@ const Login = () => {
                         type="password"
                         onChange={(e) =>setPassword(e.target.value)}
                     />
-                    <Button onClick={handleClick}>ENTRER</Button>
+                    <Button 
+                        onClick={handleClick}
+                        disabled={isFetching}
+                    >
+                            ENTRER
+                    </Button>
+                    {error && <Error>Qu'est ce qui n'a pas marché 🔞</Error>}
                     <Link>avez-vous oublié le mot de passe ???</Link>
                     <Link>créer un nouveau compte</Link>
                 </Form>
