@@ -22,7 +22,7 @@ export default function FeaturedInfo() {
 
   //testing percentage code
 
-  //console.log(income[0].total);
+  console.log(income);
   //console.log(perc);
 
   return (
@@ -30,7 +30,7 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">Revenue</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">${ income ? income.total : 0 }</span>
+          <span className="featuredMoney">${}</span>
           <span className="featuredMoneyRate">
             -11.4 <ArrowDownward  className="featuredIcon negative"/>
           </span>

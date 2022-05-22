@@ -44,7 +44,7 @@ export default function Sidebar() {
             <Link to="/users" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
-                Users
+                Utilisateurs
               </li>
             </Link>
             <Link to="/products" className="link">
@@ -85,7 +85,7 @@ export default function Sidebar() {
           <ul className="sidebarList">
             <li className="sidebarListItem">
               <WorkOutline className="sidebarIcon" />
-              Manage
+              gestion
             </li>
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />

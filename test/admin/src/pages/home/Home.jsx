@@ -36,7 +36,7 @@ export default function Home() {
           res.data.map((item) =>
             setUserStats((prev) =>[
               ...prev,
-              {name: MONTHS[item._id - 1], "ACTIVE USER ": item.total},
+              {name: MONTHS[item._id - 1], "Active User": item.total*1000},
             ])
           );
     }catch{}
@@ -46,7 +46,7 @@ export default function Home() {
 
   }, [MONTHS])
   
-  //console.log(userStats);
+  console.log(userStats);
 
   return (
     <div className="home">

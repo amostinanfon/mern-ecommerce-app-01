@@ -27,52 +27,52 @@ export default function User() {
               className="userShowImg"
             />
             <div className="userShowTopTitle">
-              <span className="userShowUsername">Anna Becker</span>
+              <span className="userShowUsername">Amos</span>
               <span className="userShowUserTitle">Développeur</span>
             </div>
           </div>
           <div className="userShowBottom">
-            <span className="userShowTitle">Account Details</span>
+            <span className="userShowTitle">Détails de compte</span>
             <div className="userShowInfo">
               <PermIdentity className="userShowIcon" />
-              <span className="userShowInfoTitle">annabeck99</span>
+              <span className="userShowInfoTitle">The_Process</span>
             </div>
             <div className="userShowInfo">
               <CalendarToday className="userShowIcon" />
-              <span className="userShowInfoTitle">10.12.1999</span>
+              <span className="userShowInfoTitle">10.04.1988</span>
             </div>
-            <span className="userShowTitle">Contact Details</span>
+            <span className="userShowTitle">Détails Contact</span>
             <div className="userShowInfo">
               <PhoneAndroid className="userShowIcon" />
-              <span className="userShowInfoTitle">+1 123 456 67</span>
+              <span className="userShowInfoTitle">77 123 456 67</span>
             </div>
             <div className="userShowInfo">
               <MailOutline className="userShowIcon" />
-              <span className="userShowInfoTitle">annabeck99@gmail.com</span>
+              <span className="userShowInfoTitle">theprocess99@gmail.com</span>
             </div>
             <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />
-              <span className="userShowInfoTitle">New York | USA</span>
+              <span className="userShowInfoTitle">Douala | CMR</span>
             </div>
           </div>
         </div>
         <div className="userUpdate">
-          <span className="userUpdateTitle">Edit</span>
+          <span className="userUpdateTitle">Editer</span>
           <form className="userUpdateForm">
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
-                <label>Username</label>
+                <label>Nom d'utilisateur</label>
                 <input
                   type="text"
-                  placeholder="annabeck99"
+                  placeholder="The_Process"
                   className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
-                <label>Full Name</label>
+                <label>Nom complet</label>
                 <input
                   type="text"
-                  placeholder="Anna Becker"
+                  placeholder="The_Process"
                   className="userUpdateInput"
                 />
               </div>
@@ -80,23 +80,23 @@ export default function User() {
                 <label>Email</label>
                 <input
                   type="text"
-                  placeholder="annabeck99@gmail.com"
+                  placeholder="The_Process@gmail.com"
                   className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
-                <label>Phone</label>
+                <label>Tél:</label>
                 <input
                   type="text"
-                  placeholder="+1 123 456 67"
+                  placeholder="77 123 456 67"
                   className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
-                <label>Address</label>
+                <label>Adresse</label>
                 <input
                   type="text"
-                  placeholder="New York | USA"
+                  placeholder="Douala |CMR"
                   className="userUpdateInput"
                 />
               </div>
@@ -113,7 +113,7 @@ export default function User() {
                 </label>
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
-              <button className="userUpdateButton">Update</button>
+              <button className="userUpdateButton">Mise à Jour</button>
             </div>
           </form>
         </div>
