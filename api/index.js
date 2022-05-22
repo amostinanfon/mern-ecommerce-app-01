@@ -16,20 +16,6 @@ dotenv.config();
 app.use(cors());
 
 
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, authorization, Verification");
-//     next();
-// });
-
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-//     res.header("Access-Control-Allow-Headers", "*");
-//     next();
-// });
-
 mongoose.connect( process.env.MONGO_URL )
         .then(() =>console.log(' connected to database !!!'))
         .catch(err => console.log(err));
