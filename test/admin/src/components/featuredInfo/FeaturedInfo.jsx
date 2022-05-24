@@ -3,6 +3,7 @@ import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { userRequest } from "../../requestMethods";
 
+
 export default function FeaturedInfo() {
 
   const [ income , setIncome ] = useState([]);
@@ -13,24 +14,23 @@ export default function FeaturedInfo() {
         try{
             const res = await userRequest.get("/orders/income");    
             setIncome(res.data);
-            setPerc((res.data[1].total*100) / (res.data[0].total) -100 );
+            setPerc((res.data[0].total*100) / (res.data[1].total) -100 );
         } catch{}
       }
 
       getIncome();
+      
   }, [])
-
-  //testing percentage code
-
-  console.log(income);
-  //console.log(perc);
 
   return (
     <div className="featured">
       <div className="featuredItem">
         <span className="featuredTitle">Revenue</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">${}</span>
+          {/* <span className="featuredMoney">${income[0].total}</span> */}
+          {
+              console.log(income.filter(n => n=3))
+          }
           <span className="featuredMoneyRate">
             -11.4 <ArrowDownward  className="featuredIcon negative"/>
           </span>
