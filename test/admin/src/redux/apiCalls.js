@@ -1,5 +1,5 @@
 import { publicRequest } from '../requestMethods';
-import { getProductFailure, getProductStart, getProductSuccess } from './productRedux';
+import { deleteProductFailure, deleteProductStart, deleteProductSuccess, getProductFailure, getProductStart, getProductSuccess } from './productRedux';
 import { loginStart , loginFailure ,loginSuccess } from './userRedux';
 
 
@@ -23,5 +23,15 @@ export const getProducts = async (dispatch) =>{
         dispatch(getProductSuccess(res.data))
     } catch (error) {
         dispatch(getProductFailure())
+    }
+}
+
+export const deleteProduct = async (id , dispatch) =>{
+    dispatch(deleteProductStart());
+    try {
+        //const res = await userRequest.delete(`/products/${id}`)
+        dispatch(deleteProductSuccess(id))
+    } catch (error) {
+        dispatch(deleteProductFailure())
     }
 }
