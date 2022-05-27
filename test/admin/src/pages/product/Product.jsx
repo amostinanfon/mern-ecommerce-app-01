@@ -3,9 +3,20 @@ import "./product.css";
 import Chart from "../../components/chart/Chart"
 import {productData} from "../../dummyData"
 import { Publish } from "@material-ui/icons";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import { useSelector } from "react-redux";
 
 
 export default function Product() {
+
+    const location = useLocation();
+    const productId = location.pathname.split("/")[2];
+
+    const product = useSelector((state) => 
+        state.product.products.find((product) => product._id === productId)
+    )
+
+
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -20,12 +31,16 @@ export default function Product() {
           </div>
           <div className="productTopRight">
               <div className="productInfoTop">
-                  <img src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="productInfoImg" />
-                  <span className="productName">Apple Airpods</span>
+                  <img 
+                    src={product.img}
+                    alt="" 
+                    className="productInfoImg" 
+                />
+                  <span className="productName">{ product.title }</span>
               </div>
               <div className="productInfoBottom">
                   <div className="productInfoItem">
-                      <span className="productInfoKey">id:</span>
+                      <span className="productInfoKey">{product._id}:</span>
                       <span className="productInfoValue">123</span>
                   </div>
                   <div className="productInfoItem">
@@ -33,12 +48,8 @@ export default function Product() {
                       <span className="productInfoValue">5123</span>
                   </div>
                   <div className="productInfoItem">
-                      <span className="productInfoKey">active:</span>
-                      <span className="productInfoValue">oui</span>
-                  </div>
-                  <div className="productInfoItem">
                       <span className="productInfoKey">en stock:</span>
-                      <span className="productInfoValue">non</span>
+                      <span className="productInfoValue">{product.inStock}</span>
                   </div>
               </div>
           </div>
@@ -47,21 +58,20 @@ export default function Product() {
           <form className="productForm">
               <div className="productFormLeft">
                   <label>Nom du produit</label>
-                  <input type="text" placeholder="Apple AirPod" />
+                  <input type="text" placeholder={product.title} />
+                  <label>Description du produit</label>
+                  <input type="text" placeholder={product.title} />
+                  <label>Price</label>
+                  <input type="text" placeholder={product.price} />
                   <label>En Stock</label>
                   <select name="inStock" id="idStock">
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                  </select>
-                  <label>Active</label>
-                  <select name="active" id="active">
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
+                      <option value="true">Yes</option>
+                      <option value="false">No</option>
                   </select>
               </div>
               <div className="productFormRight">
                   <div className="productUpload">
-                      <img src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="productUploadImg" />
+                      <img src={product.img} />
                       <label for="file">
                           <Publish/>
                       </label>

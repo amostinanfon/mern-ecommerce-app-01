@@ -27,10 +27,8 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">Revenue</span>
         <div className="featuredMoneyContainer">
-          {/* <span className="featuredMoney">${income[0].total}</span> */}
-          {
-              console.log(income.filter(n => n=3))
-          }
+          <span className="featuredMoney">${income[1]?.total}</span>
+        
           <span className="featuredMoneyRate">
             -11.4 <ArrowDownward  className="featuredIcon negative"/>
           </span>
