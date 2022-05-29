@@ -1,5 +1,9 @@
-import { publicRequest } from '../requestMethods';
-import { deleteProductFailure, deleteProductStart, deleteProductSuccess, getProductFailure, getProductStart, getProductSuccess } from './productRedux';
+import { publicRequest, userRequest } from '../requestMethods';
+import { addProductFailure, addProductStart, addProductSuccess, 
+         deleteProductFailure, deleteProductStart, deleteProductSuccess, 
+         getProductFailure, getProductStart, getProductSuccess, 
+         updateProductFailure, updateProductStart, updateProductSuccess } 
+    from './productRedux';
 import { loginStart , loginFailure ,loginSuccess } from './userRedux';
 
 
@@ -33,5 +37,24 @@ export const deleteProduct = async (id , dispatch) =>{
         dispatch(deleteProductSuccess(id))
     } catch (error) {
         dispatch(deleteProductFailure())
+    }
+}
+export const updateProduct = async (id , product , dispatch) =>{
+    dispatch(updateProductStart());
+    try {
+         dispatch(updateProductSuccess(
+            { id , product }
+        ))
+    } catch (error) {
+        dispatch(updateProductFailure())
+    }
+}
+export const addProduct = async (product , dispatch) =>{
+    dispatch(addProductStart());
+    try {
+        const res = await userRequest.post(`/products/`, {product})
+    dispatch(addProductSuccess(res.payload));
+    } catch (error) {
+    dispatch(addProductFailure())
     }
 }
