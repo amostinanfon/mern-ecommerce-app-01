@@ -49,11 +49,11 @@ export const updateProduct = async (id , product , dispatch) =>{
         dispatch(updateProductFailure())
     }
 }
-export const addProduct = async (product , dispatch) =>{
+export const addProduct = async (product, dispatch) =>{
     dispatch(addProductStart());
     try {
-        const res = await userRequest.post(`/products/`, {product})
-    dispatch(addProductSuccess(res.payload));
+        const res = await userRequest.post("/products", product)
+    dispatch(addProductSuccess(res.data));
     } catch (error) {
     dispatch(addProductFailure())
     }
