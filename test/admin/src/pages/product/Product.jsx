@@ -41,17 +41,21 @@ export default function Product() {
   useEffect(() => {
     const getStats = async () => {
       try {
-          const res = await userRequest.get("/orders/income?pid=" + productId);
+            const res = await userRequest.get("/orders/income?pid=" + productId);
+        //   const res = await userRequest.get("/orders/income");
 
+
+          console.log(res.data);
           const list = res.data.sort((a,b) => {
-              return a._id -b._id
+              return a._id - b._id
           })
           list.map((item) =>
             setPStats((prev) =>[
               ...prev,
-              { name: MONTHS[item._id - 1], Sales: item.total},
+              { name: MONTHS[item._id - 1], Sales: item.total },
             ])
           );
+          
     } catch (err) {
         console.log(err);
     }
@@ -61,7 +65,8 @@ export default function Product() {
 
   }, [productId,MONTHS])
 
-  console.log(pStats)
+
+  //console.log(pStats)
 
   return (
     <div className="product">
@@ -117,7 +122,7 @@ export default function Product() {
               </div>
               <div className="productFormRight">
                   <div className="productUpload">
-                      {/* <img src={product.img} alt=""/> */}
+                      <img src={product.img} alt=""/>
                       <label for="file">
                           <Publish/>
                       </label>
