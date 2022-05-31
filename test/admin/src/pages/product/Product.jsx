@@ -76,7 +76,7 @@ export default function Product() {
       </div>
       <div className="productTop">
           <div className="productTopLeft">
-              <Chart data={ pStats } dataKey="Sales" title="Sales Performance"/>
+              <Chart data={ pStats } dataKey="Sales" title="Performance de vente"/>
           </div>
           <div className="productTopRight">
               <div className="productInfoTop">
@@ -114,8 +114,8 @@ export default function Product() {
                   <input type="text" placeholder={product.price} />
                   <label>En Stock</label>
                   <select name="inStock" id="idStock">
-                      <option value="true">Yes</option>
-                      <option value="false">No</option>
+                      <option value="true">Oui</option>
+                      <option value="false">Non</option>
                   </select>
               </div>
               <div className="productFormRight">
@@ -126,7 +126,7 @@ export default function Product() {
                       </label>
                       <input type="file" id="file" style={{display:"none"}} />
                   </div>
-                  <button className="productButton">Update</button>
+                  <button className="productButton">Metrre à Jour</button>
               </div>
           </form>
       </div>
