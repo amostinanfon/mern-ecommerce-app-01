@@ -1,7 +1,7 @@
 import "./userList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-//import { userRows } from "../../dummyData";
+//{ userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,7 +32,7 @@ export default function UserList() {
       renderCell: (params) => {
         return (
           <div className="userListUser">
-            <img className="userListImg" src={params.row.username} alt="" />
+            <img className="userListImg" src={params.row.img} alt="" />
             {params.row.username}
           </div>
         );
@@ -57,7 +57,7 @@ export default function UserList() {
         return (
           <>
             <Link to={"/user/" + params.row._id}>
-              <button className="userListEdit">Edit</button>
+              <button className="userListEdit">Editer</button>
             </Link>
             <DeleteOutline
               className="userListDelete"

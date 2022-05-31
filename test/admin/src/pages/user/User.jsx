@@ -6,14 +6,26 @@ import {
   PhoneAndroid,
   Publish,
 } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 import "./user.css";
 
 export default function User() {
+
+  const location = useLocation();
+  const userId = location.pathname.split("/")[2];
+
+  const user = useSelector((state) => 
+      state.user.user.currentUser.find((user) => user._id === userId)
+  )
+
+ console.log(user);
+
+
   return (
     <div className="user">
       <div className="userTitleContainer">
-        <h1 className="userTitle">Editer rles Utilisateursr</h1>
+        <h1 className="userTitle">Editer les Utilisateursr</h1>
         <Link to="/newUser">
           <button className="userAddButton">Créer</button>
         </Link>
@@ -22,12 +34,12 @@ export default function User() {
         <div className="userShow">
           <div className="userShowTop">
             <img
-              src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              src={user.img}
               alt=""
               className="userShowImg"
             />
             <div className="userShowTopTitle">
-              <span className="userShowUsername">Amos</span>
+              <span className="userShowUsername">{user.username}</span>
               <span className="userShowUserTitle">Développeur</span>
             </div>
           </div>
@@ -35,11 +47,11 @@ export default function User() {
             <span className="userShowTitle">Détails de compte</span>
             <div className="userShowInfo">
               <PermIdentity className="userShowIcon" />
-              <span className="userShowInfoTitle">The_Process</span>
+              <span className="userShowInfoTitle">{user.username}</span>
             </div>
             <div className="userShowInfo">
               <CalendarToday className="userShowIcon" />
-              <span className="userShowInfoTitle">10.04.1988</span>
+              <span className="userShowInfoTitle">{user.createdAt}</span>
             </div>
             <span className="userShowTitle">Détails Contact</span>
             <div className="userShowInfo">
@@ -48,7 +60,7 @@ export default function User() {
             </div>
             <div className="userShowInfo">
               <MailOutline className="userShowIcon" />
-              <span className="userShowInfoTitle">theprocess99@gmail.com</span>
+              <span className="userShowInfoTitle">{user.email}</span>
             </div>
             <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />
@@ -61,7 +73,7 @@ export default function User() {
           <form className="userUpdateForm">
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
-                <label>Nom d'utilisateur</label>
+                <label>{user.username}</label>
                 <input
                   type="text"
                   placeholder="The_Process"

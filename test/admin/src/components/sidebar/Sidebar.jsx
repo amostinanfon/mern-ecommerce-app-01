@@ -68,11 +68,11 @@ export default function Sidebar() {
           <ul className="sidebarList">
             <li className="sidebarListItem">
               <MailOutline className="sidebarIcon" />
-              Mail
+              Email
             </li>
             <li className="sidebarListItem">
               <DynamicFeed className="sidebarIcon" />
-              Feedback
+              Feedback | Retour Info
             </li>
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
@@ -81,7 +81,7 @@ export default function Sidebar() {
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Staff</h3>
+          <h3 className="sidebarTitle">Staff | Retour données</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem">
               <WorkOutline className="sidebarIcon" />

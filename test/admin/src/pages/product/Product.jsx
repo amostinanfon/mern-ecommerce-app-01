@@ -42,8 +42,6 @@ export default function Product() {
     const getStats = async () => {
       try {
             const res = await userRequest.get("/orders/income?pid=" + productId);
-        //   const res = await userRequest.get("/orders/income");
-
 
           console.log(res.data);
           const list = res.data.sort((a,b) => {
