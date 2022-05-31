@@ -1,10 +1,28 @@
 import { publicRequest, userRequest } from '../requestMethods';
-import { addProductFailure, addProductStart, addProductSuccess, 
-         deleteProductFailure, deleteProductStart, deleteProductSuccess, 
-         getProductFailure, getProductStart, getProductSuccess, 
-         updateProductFailure, updateProductStart, updateProductSuccess } 
-    from './productRedux';
-import { loginStart , loginFailure ,loginSuccess, getUserStart, getUserSuccess, getUserFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure } from './userRedux';
+import { addProductFailure, 
+         addProductStart, 
+         addProductSuccess, 
+         deleteProductFailure, 
+         deleteProductStart, 
+         deleteProductSuccess, 
+         getProductFailure, 
+         getProductStart, 
+         getProductSuccess, 
+         updateProductFailure, 
+         updateProductStart, 
+         updateProductSuccess 
+    } from './productRedux';
+
+import { loginStart , 
+         loginFailure ,
+         loginSuccess, 
+         getUserStart, 
+         getUserSuccess, 
+         getUserFailure, 
+         deleteUserStart, 
+         deleteUserSuccess, 
+         deleteUserFailure 
+    } from './userRedux';
 
 
 
@@ -33,8 +51,8 @@ export const getProducts = async (dispatch) =>{
 export const deleteProduct = async (id , dispatch) =>{
     dispatch(deleteProductStart());
     try {
-        //const res = await userRequest.delete(`/products/${id}`)
-        dispatch(deleteProductSuccess(id))
+        const res = await userRequest.delete(`/products/${id}`)
+        dispatch(deleteProductSuccess(id && res.data))
     } catch (error) {
         dispatch(deleteProductFailure())
     }

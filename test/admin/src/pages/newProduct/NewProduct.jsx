@@ -25,6 +25,8 @@ export default function NewProduct() {
     setCat(e.target.value.split(","));
   }
 
+  console.log(cat);
+
   const handleClick = (e) => {
     e.preventDefault();
     const fileName = new Date().getTime() + file.name;
@@ -109,7 +111,7 @@ uploadTask.on('state_changed',
         <div className="addProductItem">
           <label>Categories</label>
           <input
-            // name="text" 
+            //name="text" 
             type="text" 
             placeholder="jeans , jupes" 
             onChange={handleCat}
