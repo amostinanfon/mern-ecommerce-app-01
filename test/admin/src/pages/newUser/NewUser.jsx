@@ -26,7 +26,7 @@ export default function NewUser() {
           <input type="text" placeholder="+1 123 456 78" />
         </div>
         <div className="newUserItem">
-          <label>Addresse</label>
+          <label>Adresse</label>
           <input type="text" placeholder="New York | USA" />
         </div>
         <div className="newUserItem">

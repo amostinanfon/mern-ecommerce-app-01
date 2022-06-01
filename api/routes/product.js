@@ -86,12 +86,10 @@ router.get("/", async(req,res, next) => {
                 $in: [qCategory]
             }})
             res.status(200).json(products);
-            console.log(products);
 
         } else {
             products = await Product.find();
             res.status(200).json(products);
-            console.log(products)
 
         }
     }catch(err){

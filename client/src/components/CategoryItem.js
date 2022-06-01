@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 
 
 const Container = styled.div`
-  display: flex;
   flex: 1;
   margin: 3px;
   height: 70vh;
@@ -15,7 +14,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  ${mobile({height:"30vh"})}
+  ${mobile({marginRight:"5px"})}
 
 `
 const Info = styled.div`
@@ -28,6 +27,7 @@ const Info = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  justify-content: center;
 `
 const Title = styled.h1`
     color: white;
