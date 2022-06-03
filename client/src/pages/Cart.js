@@ -175,18 +175,13 @@ const Cart = () => {
         setStripeToken(token);
     };
 
-    //console.log(stripeToken);
-
     useEffect(() => {
         const makeRequest = async () => {
             try{
                 const res = await userRequest.post("/checkout/payment", {
                     tokenId: stripeToken.id,
                     amount: 500,
-                });
-
-                //console.log(res)
-                
+                });                
                 navigate("/success", {state : {data: res.data}});
             }catch{
 
@@ -220,8 +215,15 @@ const Cart = () => {
                                         <Details>
                                             <ProductName><b>Article:</b>{product.title}</ProductName>
                                             <ProductId><b>ID:</b>{product._id}</ProductId>
-                                            <ProductColor color={product.couleur}/>
-                                            <ProductSize><b>Taille:</b>{product.taille}</ProductSize>
+                                            <>
+                                            Couleur
+                                             {
+                                                 product.color.map((color)=>
+                                                    <ProductColor color={color}></ProductColor>
+                                                 )
+                                             }
+                                            </>
+                                            <ProductSize><b>Taille:</b>{product.size}</ProductSize>
                                         </Details>
                                     </ProductDetail>
                                     <PriceDetail>

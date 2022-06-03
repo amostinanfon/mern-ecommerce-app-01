@@ -62,7 +62,7 @@ const FilterColor = styled.div`
     height: 20px;
     border-radius: 50%;
     background-color: ${props => props.color};
-    margin: 0px 5px;
+    margin: 0px 3px;
     cursor: pointer;
 `
 const FilterTitle = styled.span`
@@ -70,6 +70,7 @@ const FilterTitle = styled.span`
     font-weight: 200px;
 `
 const FilterSizeOption = styled.option`
+margin: 2px;
 `
 const Filter = styled.div`
     display: flex;
@@ -77,7 +78,7 @@ const Filter = styled.div`
 
 `
 const FilterSize = styled.select`
-    margin-left: 10px;
+    margin: 10px;
     padding: 5px;
 `;
 
@@ -152,12 +153,12 @@ const Product = () => {
     } 
 
     const handleClick = () => {
+        console.log(product)
         dispatch(
             //addProduct({ product, quantity, total: product.price * quantity})
-            addProduct({ ...product, quantity , color , size })
+            addProduct({ ...product, quantity })
         )
     }
-
 
 
     return (
@@ -174,9 +175,9 @@ const Product = () => {
                         <Price>$ {product.price}</Price>
                         <FilterContainer>
                             <Filter>
-                                <FilterTitle>Couleur</FilterTitle>
+                                <FilterTitle>Couleur:</FilterTitle>
                                 { 
-                                    product.couleur?.map((c) => 
+                                    product.color?.map((c) => 
                                         <FilterColor color={c} key={c}></FilterColor>)
                                     
                                 }
@@ -185,8 +186,8 @@ const Product = () => {
                                 <FilterTitle>Taille</FilterTitle>
                                 <FilterSize>
                                     { 
-                                        product.taille?.map((t) => 
-                                            <FilterSizeOption key={t}>{t}</FilterSizeOption>
+                                        product.size?.map((s) => 
+                                                <FilterSizeOption key={s}>{s}</FilterSizeOption>
                                         )
                                     }
                                 </FilterSize>
