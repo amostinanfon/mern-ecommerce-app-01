@@ -70,7 +70,7 @@ const FilterTitle = styled.span`
     font-weight: 200px;
 `
 const FilterSizeOption = styled.option`
-margin: 2px;
+margin: 5px;
 `
 const Filter = styled.div`
     display: flex;
@@ -78,7 +78,7 @@ const Filter = styled.div`
 
 `
 const FilterSize = styled.select`
-    margin: 10px;
+    margin: 5px;
     padding: 5px;
 `;
 
@@ -167,16 +167,14 @@ const Product = () => {
         setSize(value);
     };
  
-    console.log(size);
-
     const handleClick = () => {
         product.size=size
-        console.log(product)
         dispatch(
-            //addProduct({ product, quantity, total: product.price * quantity})
             addProduct({ ...product ,  quantity })
         )
     }
+
+
 
 
     return (
