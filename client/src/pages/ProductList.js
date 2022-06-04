@@ -61,8 +61,8 @@ const ProductList = () => {
             ...filters,
             [e.target.name]: value, 
         });
-
     };
+
     const handleNew = (e) => {
         const value = e.target.value;
         setSort(value)

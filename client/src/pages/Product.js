@@ -152,11 +152,29 @@ const Product = () => {
         }
     } 
 
+    const handleColor = (e) => {
+
+        const value = e.target.value;
+        setColor({
+            ...color,
+            [e.target.name]: value, 
+        });
+
+    };
+
+    const handleSize = (e) => {
+        const value = e.target.value;
+        setSize(value);
+    };
+ 
+    console.log(size);
+
     const handleClick = () => {
+        product.size=size
         console.log(product)
         dispatch(
             //addProduct({ product, quantity, total: product.price * quantity})
-            addProduct({ ...product, quantity })
+            addProduct({ ...product ,  quantity })
         )
     }
 
@@ -184,12 +202,15 @@ const Product = () => {
                             </Filter>
                             <Filter>
                                 <FilterTitle>Taille</FilterTitle>
-                                <FilterSize>
+                                <FilterSize name="" key={product.size} onChange={handleSize}>
+                                
                                     { 
                                         product.size?.map((s) => 
-                                                <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                                                <FilterSizeOption key={s} onClick={handleSize}>{s}</FilterSizeOption>
                                         )
                                     }
+                                  
+                                    
                                 </FilterSize>
                             </Filter>
                         </FilterContainer>
