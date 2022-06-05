@@ -1,6 +1,6 @@
 //import React from "react";
 import styled from "styled-components";
-import {Search, Remove, ShoppingCartOutlined} from "@material-ui/icons"
+import {Search, ArrowDownwardOutlined, ShoppingCartOutlined} from "@material-ui/icons"
 import Badge from '@material-ui/core/Badge';
 import mobile from '../responsive'
 import { useSelector } from "react-redux";
@@ -72,13 +72,14 @@ const Right = styled.div`
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
-  margin-left: 25px;
+  margin-left: 15px;
   ${mobile({fontSize:"10px", marginLeft:"10px"})}
 
 `
 
 const RemoveContainer = styled.div`
-  padding: 5px;
+  padding-left: 5px;
+  margin-left: 10px;
 `
 
 const Navbar = () => {
@@ -109,10 +110,10 @@ const Navbar = () => {
           <MenuItem>ENREGISTRER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
           <RemoveContainer>
-            <Remove onClick={removeCart}/>
+            <ArrowDownwardOutlined onClick={removeCart} style={{cursor:"pointer", color:"blue"}}/>
           </RemoveContainer>
           <Link to="/cart">
-            <MenuItem>
+            <MenuItem style={{margin:"0px"}}>
                   <Badge badgeContent={quantity} color="primary">
                     <ShoppingCartOutlined />
                   </Badge>
