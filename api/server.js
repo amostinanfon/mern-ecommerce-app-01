@@ -16,7 +16,7 @@ dotenv.config();
 app.use(cors());
 
 
-mongoose.connect( process.env.MONGO_URL )
+mongoose.connect(" mongodb+srv://admin:admin@ecommerce.kk5cn.mongodb.net/?retryWrites=true&w=majority")
         .then(() =>console.log(' connected to database !!!'))
         .catch(err => console.log(err));
  

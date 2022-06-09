@@ -209,7 +209,7 @@ const Cart = () => {
               <Hr/>
               <Bottom>
                       <Info>
-                          {cart.products.map((product, index) =>(
+                          {cart.products.map((product, index) =>(                                               
                                 <Product key={index}>
                                     <ProductDetail>
                                         <Image src={product.img}/>
@@ -219,6 +219,7 @@ const Cart = () => {
                                             <>
                                             Couleur
                                              {
+
                                                  product.color.map((color)=>
                                                     <ProductColor color={color}></ProductColor>
                                                  )
