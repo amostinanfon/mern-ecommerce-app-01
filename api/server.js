@@ -16,7 +16,7 @@ dotenv.config();
 app.use(cors());
 
 
-mongoose.connect(" mongodb+srv://admin:admin@ecommerce.kk5cn.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://admin:admin@cluster0.kk5cn.mongodb.net/ecommerce?retryWrites=true&w=majority")
         .then(() =>console.log(' connected to database !!!'))
         .catch(err => console.log(err));
  
@@ -31,6 +31,6 @@ app.use('/api/orders', orderRoute);
 app.use('/api/checkout', stripeRoute); 
 
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 8080, () => {
     console.log("Backend server is running")
 })
