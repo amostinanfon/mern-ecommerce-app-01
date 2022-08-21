@@ -57,6 +57,7 @@ uploadTask.on('state_changed',
   }, 
   (error) => {
     // Handle unsuccessful uploads
+    console.log(error);
   }, 
   () => {
     // Handle successful uploads on complete
@@ -128,7 +129,7 @@ uploadTask.on('state_changed',
           </select>
         </div>
         <button
-          onClick={handleClick} 
+          onClick={handleClick}
           className="addProductButton">Créer</button>
       </form>
     </div>

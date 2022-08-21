@@ -8,8 +8,8 @@ export default function Success() {
    
 
   return (
-
-    <div style={{
+   <div>
+       <div style={{
       height: "120vh",
       display: "flex",
       alignItems: "center",
@@ -37,5 +37,6 @@ export default function Success() {
     </div>
 
     </div>
+   </div>
   )
 }

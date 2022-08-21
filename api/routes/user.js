@@ -57,6 +57,7 @@ router.get("/find/:id", verifyTokenAndAdmin, async(req,res) => {
 // GET ALL USER ... AVOIR TOUS LES UTILISATEURS
 
 router.get("/", verifyTokenAndAdmin, async(req,res) => {
+//router.get("/", async(req,res) => {
 
     // RETOURNER UN NOMBRE PRECIS D'UTILISATEURS
     const query = req.query.new
