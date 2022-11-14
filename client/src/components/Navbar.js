@@ -87,7 +87,7 @@ const RemoveContainer = styled.div`
 const Navbar = () => {
 
   const quantity = useSelector(state => state.cart.quantity);
-  const stateUser = useSelector(state => state.user.currentUser.username)
+  const stateUser = useSelector(state => state.user.currentUser?.username)
   console.log('stateUser :'+ stateUser);
 
   const dispatch = useDispatch();
